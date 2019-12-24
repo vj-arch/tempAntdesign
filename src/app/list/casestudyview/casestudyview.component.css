@@ -1,0 +1,13 @@
+.case-data-maindiv {
+  width: 100%;
+  background-color: #fff;
+  padding: 15px;
+}
+.case-data-heading {
+  font-size: 20px;
+  color: rgb(11, 126, 219);
+}
+.case-data-para {
+  color: black;
+  text-align: justify;
+}

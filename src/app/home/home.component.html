@@ -1,0 +1,164 @@
+<div class="maindiv">
+  <nz-breadcrumb>
+    <nz-breadcrumb-item>
+      <i nz-icon nzType="home"></i>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a><i nz-icon nzType="user"></i><span>Application List</span></a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      Application
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+
+  <div nz-row style="margin-top:10px;">
+    <div nz-col nzSpan="8">
+      <div class="innerdiv-dashboard " style="background-color: #fd9644;">
+        <div class="margindiv">
+          <div>
+            <p id="margindiv-p">
+              150
+            </p>
+            <p>New Payments</p>
+          </div>
+
+          <p id="span-innerdiv" style=" color: #ec7a2d;">
+            <i nz-icon nzType="line-chart" nzTheme="outline"></i>
+          </p>
+        </div>
+        <div id="anotherdiv" style="background-color: #fa8231;">
+          <p class="">
+            More
+            <i nz-icon nzType="caret-right" nzTheme="outline"></i>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan="8">
+      <div class="innerdiv-dashboard " style="background-color: #26de81;">
+        <div class="margindiv">
+          <div>
+            <p id="margindiv-p">
+              150
+            </p>
+            <p>New Payments</p>
+          </div>
+          <p id="span-innerdiv" style=" color: #34bb73;">
+            <i nz-icon nzType="pie-chart" nzTheme="outline"></i>
+          </p>
+        </div>
+        <div id="anotherdiv" style="background-color: #20bf6b;">
+          <p class="">
+            More
+            <i nz-icon nzType="caret-right" nzTheme="outline"></i>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div nz-col nzSpan="8">
+      <div class="innerdiv-dashboard " style="background-color: #45aaf2;">
+        <div class="margindiv">
+          <div>
+            <p id="margindiv-p">
+              150
+            </p>
+            <p>New Payments</p>
+          </div>
+          <p id="span-innerdiv" style=" color: #2598eb;">
+            <i nz-icon nzType="bar-chart" nzTheme="outline"></i>
+          </p>
+        </div>
+        <div style="background-color:#2d98da;">
+          <div id="anotherdiv" style="background-color:#2d98da;">
+            <p class="">
+              More
+              <i nz-icon nzType="caret-right" nzTheme="outline"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="15" class="chartsdiv-left">
+      <div>
+        <div id="chartdiv2" style="width: 100%; height:800px;"></div>
+      </div>
+
+      <div>
+        <div id="chartdivpie" style="width: 100%; height: 300px"></div>
+      </div>
+      <div>
+        <button (click)="showChartwithImage()">ShowChartwithImage</button>
+        <div id="chartdiv3" style="width: 100%; height: 300px"></div>
+      </div>
+
+      <p>convert csv file to json objects</p>
+
+      <label nz-button for="fileInput">
+        <i nz-icon nzType="upload"></i><span>Click to Upload</span>
+      </label>
+      <input
+        type="file"
+        shape="round"
+        (change)="convertFile($event)"
+        id="fileInput"
+      />
+
+      <div>
+        <div id="chartdivdonut" style="width: 100%; height: 500px"></div>
+      </div>
+    </div>
+    <div nz-col nzSpan="1"></div>
+    <div nz-col nzSpan="8" class="chartsdiv-right">
+      <div class="inner-div-right">
+        <button nz-button nzType="primary">
+          <i nz-icon nzType="filter" nzTheme="outline"></i>
+
+          Filters
+        </button>
+        <br />
+        <br />
+        <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+          <input type="text" nz-input placeholder="input search text" />
+        </nz-input-group>
+        <ng-template #suffixIconButton>
+          <button nz-button nzType="primary" nzSearch>
+            <i nz-icon nzType="search"></i>
+          </button>
+        </ng-template>
+        <br />
+        <br />
+        <p>Select The Date Range</p>
+        <nz-range-picker></nz-range-picker>
+        <br />
+        <br />
+        <p>Filter by Country</p>
+        <nz-select
+          [(ngModel)]="multipleValue"
+          nzMode="multiple"
+          nzPlaceHolder="Please select"
+          (ngModelChange)="selectedData('country')"
+        >
+          <nz-option
+            *ngFor="let option of listOfOption"
+            [nzLabel]="option.label"
+            [nzValue]="option.value"
+          ></nz-option>
+        </nz-select>
+        <br />
+        <br />
+        <p>Filter By Literacy Rate</p>
+        <nz-slider
+          nzRange
+          [nzStep]="10"
+          [nzMin]="100"
+          [nzMax]="400"
+          [(ngModel)]="rangeValue"
+          (ngModelChange)="selectedData('range')"
+        ></nz-slider>
+        <p>{{ rangeValue }}</p>
+      </div>
+    </div>
+  </div>
+</div>

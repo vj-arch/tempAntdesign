@@ -1,0 +1,5 @@
+<button nz-button (click)="displayData()">Get Data</button>
+
+<ul [hidden]="flag">
+  <li *ngFor="let parent of parent1">{{ parent }}</li>
+</ul>

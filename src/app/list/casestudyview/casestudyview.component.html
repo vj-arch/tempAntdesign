@@ -1,0 +1,20 @@
+<div
+  class="case-data-maindiv"
+  [hidden]="!caseData.length"
+  *ngFor="let d of caseData"
+>
+  <h2>{{ d.title }}</h2>
+  <div>
+    <p class="case-data-heading">Summary of the impact</p>
+    <p class="case-data-para">{{ d.summary }}</p>
+  </div>
+  <div>
+    <p class="case-data-heading">Underpinning research</p>
+    <p class="case-data-para">{{ d.underpinning }}</p>
+  </div>
+  <div>
+    <p class="case-data-heading">References to the research</p>
+    <p class="case-data-para">{{ d.References }}</p>
+  </div>
+</div>
+<p-editor #text ngModel [style]="{ height: '320px' }"></p-editor>

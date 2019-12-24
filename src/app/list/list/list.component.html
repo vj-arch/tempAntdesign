@@ -1,0 +1,133 @@
+<html>
+  <div class="SeacrhClass">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a>Home</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        Case Studies
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <div>
+      <div nz-row>
+        <p style="color:black;font-weight:500;padding-top:10px;">
+          Search University Case Studies
+        </p>
+        <br />
+        <div class="list-searchbar">
+          <nz-input-group
+            nzSearch
+            nzSize="large"
+            [nzAddOnAfter]="suffixButton"
+            class="searchFeild"
+          >
+            <input type="text" nz-input placeholder="input search text" />
+          </nz-input-group>
+          <ng-template #suffixButton>
+            <button nz-button nzType="primary" nzSize="large" nzSearch>
+              Search
+            </button>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="list-items-main">
+    <div class="uploadCSV">
+      <label nz-button for="fileInput">
+        <i nz-icon nzType="upload"></i><span>Upload</span>
+      </label>
+      <input
+        type="file"
+        #fileInput1
+        shape="round"
+        (click)="fileInput1.value = null"
+        (change)="Upload($event)"
+        id="fileInput"
+      />
+    </div>
+    <div class="list-item-main">
+      <p class="list-item-heading">Aliplay</p>
+      <div class="list-item-buttons">
+        <button nz-button nzSize="small" nzType="default">Ant Design</button>
+        <button nz-button nzSize="small" nzType="default">Ant Design</button>
+        <button nz-button nzSize="small" nzType="default">Ant Design</button>
+      </div>
+      <p class="list-item-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta labore
+        nam consequuntur magni suscipit ex. In expedita minus accusamus libero.
+      </p>
+      <div class="list-item-datentime">
+        <i
+          nz-icon
+          nzType="alibaba"
+          color="primary"
+          class="list-item-logo"
+          nzTheme="outline"
+        ></i
+        >&nbsp;
+        <p>Lorem ipsum dolor</p>
+        &nbsp;
+        <p>ant.design</p>
+        &nbsp;
+        <p>2019-11-29-10.25</p>
+      </div>
+      <div class="list-item-social">
+        <p><i nz-icon nzType="like" nzTheme="outline"></i>13</p>
+        &nbsp; | &nbsp;
+        <p><i nz-icon nzType="message" nzTheme="outline"></i>13</p>
+        &nbsp; | &nbsp;
+        <p><i nz-icon nzType="heart" nzTheme="outline"></i>13</p>
+        &nbsp; &nbsp;
+      </div>
+    </div>
+    <nz-divider></nz-divider>
+
+    <div
+      class="list-item-main"
+      [hidden]="!data.length"
+      *ngFor="let excelData of data"
+    >
+      <div [hidden]="excelData.id == ''">
+        <p class="list-item-heading" [routerLink]="['casestudy', excelData.id]">
+          {{ excelData.title }}
+        </p>
+        <div class="list-item-buttons">
+          <button nz-button nzSize="small" nzType="default">
+            {{ excelData.Linkbuttons }}
+          </button>
+          <button nz-button nzSize="small" nzType="default">Ant Design</button>
+          <button nz-button nzSize="small" nzType="default">Ant Design</button>
+        </div>
+        <p class="list-item-paragraph">
+          {{ excelData.content }}
+        </p>
+        <div class="list-item-datentime">
+          <i
+            nz-icon
+            nzType="alibaba"
+            color="primary"
+            class="list-item-logo"
+            nzTheme="outline"
+          ></i
+          >&nbsp;
+          <p>Lorem ipsum dolor</p>
+          &nbsp;
+          <p>{{ excelData.url }}</p>
+          &nbsp;
+          <p>{{ today | date }}</p>
+        </div>
+        <div class="list-item-social">
+          <p><i nz-icon nzType="like" nzTheme="outline"></i>13</p>
+          &nbsp; | &nbsp;
+          <p><i nz-icon nzType="message" nzTheme="outline"></i>13</p>
+          &nbsp; | &nbsp;
+          <p><i nz-icon nzType="heart" nzTheme="outline"></i>13</p>
+          &nbsp; &nbsp;
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</html>
